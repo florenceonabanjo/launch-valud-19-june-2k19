@@ -1,0 +1,177 @@
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <script src="http://js.api.here.com/v3/3.0/mapsjs-core.js"
+    type="text/javascript" charset="utf-8"></script>
+    <script src="http://js.api.here.com/v3/3.0/mapsjs-service.js"
+    type="text/javascript" charset="utf-8"></script>
+    <script src="http://js.api.here.com/v3/3.0/mapsjs-places.js"
+    type="text/javascript" charset="utf-8"></script>
+    <script src="http://js.api.here.com/v3/3.0/mapsjs-mapevents.js" 
+    type="text/javascript" charset="utf-8"></script>
+    <script src="http://js.api.here.com/v3/3.0/mapsjs-ui.js" 
+    type="text/javascript" charset="utf-8"></script>
+  <!----<link rel="stylesheet" type="text/css" 
+    href="http://js.api.here.com/v3/3.0/mapsjs-ui.css" />-->
+    <link rel="stylesheet" type="text/css" href="bubble.css"> 	
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+
+  <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <link rel="stylesheet" type="text/css" href="geo.css"> 	
+        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+
+
+
+<style>
+
+p {
+          font-family: "Raleway", serif;
+          font-size: 16px;
+      }
+
+      iframe {
+        background: white;
+        border-color: transparent;
+        border-radius: 10px;
+        height: 10%;
+      }
+</style>
+
+  </head>
+  <body>
+      <header id ="top">
+          <div class="nav">
+            <label for="toggle">&#9776;</label> 
+              <input type="checkbox" id="toggle"/> 
+                <div class="menu">
+        
+                  <a href="index.html">Home</a>
+                  <a href="home.html"> Build your health from anywhere &#x1F680; </a>
+                  <a href="geo.html"> Build your health in London</a>
+                 
+                  <!--<a href="sign-up.html">Sign up </a>-->
+                
+
+                </div>
+          </div>
+        </header>
+      
+<div class="prescribe"><p>Bringing social prescribing to you. </p> </div> 
+<div style="width: 90%; height: 480px" id="mapContainer"></div> 
+
+        <script>
+          // Initialize the platform object:
+          var platform = new H.service.Platform({
+          'app_id': 'F8lR8ntSODcMX6KsA34m',
+          'app_code': '4s_jpfO23lBIssYNO9I6fQ'
+          });
+          // Obtain the default map types from the platform object
+          var maptypes = platform.createDefaultLayers();
+        
+          // Instantiate (and display) a map object:
+          var map = new H.Map(
+          document.getElementById('mapContainer'),
+          maptypes.terrain.map,
+          
+          {
+            zoom: 12,
+            center: { lat: 51.5395507, lng: 0.0809453 }
+          });
+      
+      // Create the default UI:
+      var ui = H.ui.UI.createDefault(map, maptypes);
+      
+      // Create an info bubble object at a specific geographic location:
+      var bubble = new H.ui.InfoBubble({ lng: 0.0809453 , lat: 51.5395507 
+      
+      }, {
+              content: '<p>Home  </p>'
+             });
+      
+             let stratford = new H.ui.InfoBubble({ lng: -0.0187404 , lat: 51.5432994 
+      
+      }, {
+              content: '<p>Olympic Park, Stratford International &#x1F680; </p> <iframe src="https://developer.citymapper.com/api/1/traveltime/?startcoord=51.5395507%2C0.0809453&endcoord=51.5432994%2C-0.0187404&time=2014-11-06T19%3A00%3A02-0500&time_type=arrival&key=c026f5707d13e1c61134c804f2f73f9d"></iframe> '
+             });
+      
+             let vegan = new H.ui.InfoBubble({ lng: -0.1329047 , lat: 51.5319616
+      
+      }, {
+              content: '<p>Life After Hummus, Camden   &#x1F347;</p>   <iframe src="https://developer.citymapper.com/api/1/traveltime/?startcoord=51.5395507%2C0.0809453&endcoord=51.5319616%2C-0.1329047&time=2014-11-06T19%3A00%3A02-0500&time_type=arrival&key=c026f5707d13e1c61134c804f2f73f9d"></iframe> <br>  <p> &#x1F4AD; Attend on Monday evenings</p>'
+             });
+      
+             let therapy = new H.ui.InfoBubble({ lng: -0.1310081 , lat: 51.5660369
+      
+      }, {
+              content: '<p>Women Counselling Centre, Islington  &#x2665;</p> <iframe src="https://developer.citymapper.com/api/1/traveltime/?startcoord=51.5395507%2C0.0809453&endcoord=51.5660369%2C-0.1310081&time=2014-11-06T19%3A00%3A02-0500&time_type=arrival&key=c026f5707d13e1c61134c804f2f73f9d"></iframe> '
+            });
+      
+      // Add info bubble to the UI:
+      ui.addBubble(bubble);
+      ui.addBubble(stratford);
+      ui.addBubble(vegan);
+      ui.addBubble(therapy);
+      
+      // Enable the event system on the map instance:
+      var mapEvents = new H.mapevents.MapEvents(map);
+      // Add event listeners:
+      map.addEventListener('tap', function(evt) {
+        // Log 'tap' and 'mouse' events:
+        console.log(evt.type, evt.currentPointer.type); 
+      });
+      // Instantiate the default behavior, providing the mapEvents object: 
+      var behavior = new H.mapevents.Behavior(mapEvents);
+      
+      
+      </script>
+
+
+<div class="intro">
+  <p>
+    Journey times are calculated and are constantly updated in real time (thank big data). <br><br>Journey times are based on the quickest route by public transport from Barking Station. <br>Click <img src="https://static.citymapper.com/img/embed/GetMeThere_Citymapper.png" alt="Get directions with Citymapper"/> to get a wide range of transport options to the location via CityMapper. <br>The map will be updated regularly.</p>
+  </p>
+</div>
+
+  <div class="stratford">
+    
+    <p>Olympic Park, Stratford<br> Closest station: Stratford International</p> <a href='https://citymapper.com/go/6btcajigst' target="_blank"><img src="https://static.citymapper.com/img/embed/GetMeThere_Citymapper.png" alt="Get directions with Citymapper" /></a>
+    
+    
+ 
+
+  </div>
+
+  <div class="camden">
+    
+      <p>Life After Humus, Camden</p> <a href='https://citymapper.com/go/tzsq42vdts' target="_blank"><img src="https://static.citymapper.com/img/embed/GetMeThere_Citymapper.png" alt="Get directions with Citymapper" /></a>
+      
+   
+  
+    </div>
+
+    <div class="islington">
+    
+        <p>Maya Centre, Islington</p> <a href='https://citymapper.com/go/xdt8o76afm' target="_blank"><img src="https://static.citymapper.com/img/embed/GetMeThere_Citymapper.png" alt="Get directions with Citymapper" /></a>
+        
+    
+     
+    
+      </div>
+
+
+
+
+
+ 
+ 
+<div class ="footer">
+    <p> Hand-crafted with &#x1F49C; by <a href= "https://www.linkedin.com/in/florence-kay-105315180/">Florence Kay </a><br><br>
+           Copywright &copy; <script>document.write(new Date().getFullYear())</script> valud All rights reserved. <br> <br><a href="https://twitter.com/valudhealthhq" class="fa fa-twitter"></a> <a href="#" class="fa fa-linkedin"></a>  </p>
+</div>
+
+</body>
+</html>
