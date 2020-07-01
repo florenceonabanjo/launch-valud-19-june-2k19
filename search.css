@@ -1,0 +1,158 @@
+html, body{
+
+    height: 100%;
+    width: 100%;
+    Font-family: "Source Sans Pro", serif;
+  
+  }
+  
+  ::placeholder {
+    Font-family: "Source Sans Pro", serif;
+  }
+  
+  .container {
+  
+    height: 100%;
+    width: 100%;
+  }
+  
+  
+  .nav {
+  text-align: center;
+  }
+  
+  #toggle {
+  display: none;
+  
+  }
+  
+  #toggle:checked + .menu {
+  display: block;
+  }
+  
+  label {
+  display: block;
+  cursor: pointer;
+  font-size: 26px;
+  position: absolute;
+  right: 2.5%;
+  /*top: -0.5%;
+  background: white;
+  border-radius: 50%;*/
+  
+  margin-top: 2%;
+  z-index: 2;
+  color: black;
+  
+  
+  }
+  
+  
+  
+  .menu {
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  width: 25%;
+  text-align: right;
+  display: none;
+  background: white;
+  opacity: 1.0;
+  z-index: 1;
+  
+  
+  height: 100%;
+  }
+  
+  .menu a {
+  display: block;
+  padding: 1%;
+  font-size: 36px;
+  margin-top: 20%;
+  color: black;
+  margin-right: 2%;
+  text-decoration: none;
+  
+  }
+  
+  @media only screen and (max-width: 1024px) {
+  .menu {
+  width: 90%;
+  }
+  }
+  
+  
+  #searchBar {
+  position: absolute;
+  top: 5%;
+  left: 20%;
+  border-style: solid;
+  border-radius: 20px;
+  border-color: transparent;
+  Box-shadow: 0 0 10px #d3d3d3;
+  border: 20%;
+  width: 60%;
+  padding: 2%;
+  letter-spacing: 2px;
+  }
+  
+  a {
+  
+    text-decoration: none;
+    color: transparent;
+    text-align: center;
+  }
+  
+  ul {
+    height: 100%;
+    position: absolute;
+    top: 20%;
+    left: 25%;
+    width: 90%;
+    list-style-type: none;
+    padding-left: 0%;
+    margin-right: 0%;
+  }
+  
+  li {
+  /*position: absolute;
+  left: 20%;*/
+  border-style: solid;
+  border-radius: 20px;
+  border-color: transparent;
+  Box-shadow: 0 0 10px #d3d3d3;
+  height: 80%;
+  width: 60%;
+  margin-bottom: 10%;
+  }
+  
+  
+  h2 {
+  text-align: center;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 150%;
+  letter-spacing: 2px;
+  }
+  
+  ::-webkit-scrollbar {
+  width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+  border: 7px solid white;
+  Box-shadow: 0 0 10px #d3d3d3;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+  Background: -webkit-linear-gradient(-45deg, #ffc3a0, #ffafbd);
+  Background:-moz-linear-gradient(-45deg, #ffc3a0, #ffafbd);
+  border-radius: 3px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+  Background: -webkit-linear-gradient(-45deg, #ffc3a0, #ffafbd);
+  Background:-moz-linear-gradient(-45deg, #ffc3a0, #ffafbd);
+  
+  }
+  
